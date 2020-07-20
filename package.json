@@ -5,17 +5,21 @@
   "main": "dist/Apm.js",
   "types": "dist/Apm.d.js",
   "scripts": {
-    "build": "npm run lint && npm run build-ts && parcel build compiled\\Apm.js --no-source-maps ",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "build": "npm run lint && npm run build-ts",
     "lint": "eslint . --ext .ts",
-    "build-ts": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-ts": "tsc"
   },
   "author": "the-toster",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^26.0.5",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
     "eslint": "^7.5.0",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.3",
     "typescript": "^3.9.7"
   },
   "dependencies": {

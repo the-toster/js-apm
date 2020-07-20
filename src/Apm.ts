@@ -4,7 +4,7 @@ export default class Apm {
     readonly navigator: Navigator;
     readonly performance: Performance;
 
-    constructor(window: Window) {
+    constructor(window: WindowInterface) {
         this.navigator = window.navigator;
         this.performance = window.performance;
     }
@@ -21,4 +21,9 @@ export default class Apm {
     }
 
 
+}
+
+interface WindowInterface {
+    readonly navigator: Navigator,
+    readonly performance: Performance,
 }
