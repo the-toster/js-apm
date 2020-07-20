@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/the-toster/js-apm.svg?branch=master)](https://travis-ci.com/the-toster/js-apm)
 # Performance monitoring for web app
 
 get profile data from client 
