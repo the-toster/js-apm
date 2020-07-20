@@ -10,8 +10,8 @@ export default class Apm {
     }
 
     getGeneralInfo(): GeneralInfo {
-        let perf: PerformanceNavigationTiming | undefined;
-        perf = this.performance.getEntriesByName('navigation')[0] as (PerformanceNavigationTiming | undefined);
+        const perf: PerformanceNavigationTiming | undefined =
+            this.performance.getEntriesByName('navigation')[0] as (PerformanceNavigationTiming | undefined);
 
         return new GeneralInfo(
             this.navigator.userAgent,
