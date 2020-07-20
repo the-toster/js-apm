@@ -6,8 +6,3 @@ export default class GeneralInfo {
     ) {
     }
 }
-
-interface ConnectionInfo {
-    readonly type: string,
-    readonly effectiveType: string
-}
