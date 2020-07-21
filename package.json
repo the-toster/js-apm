@@ -1,6 +1,6 @@
 {
   "name": "js-apm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Web app performance sampler",
   "main": "dist/Apm.js",
   "types": "dist/Apm.d.js",
