@@ -5,7 +5,7 @@ import Apm from '../../src/Apm';
 describe('getGeneralInfo', () => {
 
     const performance = {
-        getEntriesByName: () => [{domComplete: 100} as PerformanceNavigationTiming]
+        getEntriesByType: () => [{domComplete: 100} as PerformanceNavigationTiming]
     }
 
     const window = {

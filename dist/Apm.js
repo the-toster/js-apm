@@ -5,7 +5,7 @@ var Apm = /** @class */ (function () {
         this.performance = window.performance;
     }
     Apm.prototype.getGeneralInfo = function () {
-        var perf = this.performance.getEntriesByName('navigation')[0];
+        var perf = this.performance.getEntriesByType('navigation')[0];
         return new GeneralInfo(this.navigator.userAgent, this.navigator.connection, perf);
     };
     return Apm;
