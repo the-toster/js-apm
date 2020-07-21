@@ -7,31 +7,29 @@ get profile data from client
 ```sh
 npm i js-apm
 ```
+or bundled:  
+```html
+<script src="dist/bundle/js-apm.js"></script>
+```
+will expose global `Apm` constuctor
 
 ## Usage
 
 ```js
-
 import Apm from "js-apm";
 
 const apm = new Apm(window);
-
 const data = apm.getGeneralInfo();
-
-/*
-data is:
-{
-    userAgent: string;
-    connection?: NetworkInformation | undefined;
-    navigationTiming?: PerformanceNavigationTiming | undefined;
-}
-
-*/
-
 ```
+data is:
+```ts
+class GeneralInfo {
+    readonly userAgent: string;
+    readonly connection?: NetworkInformation | undefined;
+    readonly navigationTiming?: PerformanceNavigationTiming | undefined;
+}
+```
+fields description:
 
-where NetworkInformation is:  
-https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation
-
-and PerformanceNavigationTiming:  
-https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming
+[NetworkInformation](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation)  
+[PerformanceNavigationTiming](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming)
