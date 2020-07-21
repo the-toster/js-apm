@@ -21,15 +21,34 @@ import Apm from "js-apm";
 const apm = new Apm(window);
 const data = apm.getGeneralInfo();
 ```
-data is:
+where data is:
 ```ts
-class GeneralInfo {
-    readonly userAgent: string;
-    readonly connection?: NetworkInformation | undefined;
-    readonly navigationTiming?: PerformanceNavigationTiming | undefined;
+export default class GeneralInfo {
+    userAgent: string;
+    connection?: Connection;
+    timing?: Timing;
+}
+
+declare class Connection {
+    type?: "bluetooth" | "none" | "unknown" | "cellular" | "ethernet" | "mixed" | "other" | "wifi" | "wimax" | undefined;
+    effectiveType?: "2g" | "3g" | "4g" | "slow-2g" | undefined;
+    downlinkMax?: number | undefined;
+    downlink?: number | undefined;
+    rtt?: number | undefined;
+    saveData?: boolean | undefined;
+}
+
+declare class Timing {
+    domComplete: number;
+    domContentLoadedEventEnd: number;
+    domContentLoadedEventStart: number;
+    domInteractive: number;
+    loadEventEnd: number;
+    loadEventStart: number;
+    redirectCount: number;
+    unloadEventEnd: number;
+    unloadEventStart: number;
 }
 ```
-fields description:
-
-[NetworkInformation](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation)  
-[PerformanceNavigationTiming](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming)
+`Connection` is serializable version of [NetworkInformation](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation)  
+And `Timing` is like [PerformanceNavigationTiming](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming)

@@ -19,6 +19,6 @@ describe('getGeneralInfo', () => {
         const info = apm.getGeneralInfo();
         expect(info.userAgent).toBe('UA');
         expect(info.connection && info.connection.type).toBe('wifi');
-        expect(info.navigationTiming && info.navigationTiming.domComplete).toBe(100);
+        expect(info.timing && info.timing.domComplete).toBe(100);
     })
 })
