@@ -11,6 +11,14 @@
     "lint": "eslint . --ext .ts",
     "build-ts": "tsc"
   },
+  "homepage": "https://github.com/the-toster/js-apm",
+  "bugs": {
+    "url": "https://github.com/the-toster/js-apm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-toster/js-apm.git"
+  },
   "author": "the-toster",
   "license": "MIT",
   "devDependencies": {
