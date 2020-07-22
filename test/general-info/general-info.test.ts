@@ -10,7 +10,8 @@ describe('getGeneralInfo', () => {
 
     const window = {
         navigator: {userAgent: 'UA', connection: {type: 'wifi'}} as Navigator,
-        performance: performance as unknown as Performance
+        performance: performance as unknown as Performance,
+        requestAnimationFrame: (cb: FrameRequestCallback) => {cb(100); return 100;}
     };
 
     const apm = new Apm(window);

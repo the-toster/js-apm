@@ -1,12 +1,15 @@
 import GeneralInfo from "./GeneralInfo";
+import {RequestAnimationFrame} from "./FPS/FpsMeter";
 
 export default class Apm {
     readonly navigator: Navigator;
     readonly performance: Performance;
+    readonly requestAnimationFrame: RequestAnimationFrame;
 
     constructor(window: WindowInterface) {
         this.navigator = window.navigator;
         this.performance = window.performance;
+        this.requestAnimationFrame = window.requestAnimationFrame;
     }
 
     getGeneralInfo(): GeneralInfo {
@@ -20,10 +23,15 @@ export default class Apm {
         );
     }
 
+    startFpsMeasurement(): void {
+
+    }
 
 }
 
 interface WindowInterface {
     readonly navigator: Navigator,
     readonly performance: Performance,
+    readonly requestAnimationFrame: RequestAnimationFrame
 }
+
