@@ -39,16 +39,17 @@ declare class Connection {
 }
 
 declare class Timing {
-    domComplete: number;
-    domContentLoadedEventEnd: number;
-    domContentLoadedEventStart: number;
-    domInteractive: number;
-    loadEventEnd: number;
-    loadEventStart: number;
-    redirectCount: number;
-    unloadEventEnd: number;
-    unloadEventStart: number;
+    domComplete: bigint;
+    domContentLoadedEventEnd: bigint;
+    domContentLoadedEventStart: bigint;
+    domInteractive: bigint;
+    loadEventEnd: bigint;
+    loadEventStart: bigint;
+    redirectCount: bigint;
+    unloadEventEnd: bigint;
+    unloadEventStart: bigint;
 }
 ```
 `Connection` is serializable version of [NetworkInformation](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation)  
-And `Timing` is like [PerformanceNavigationTiming](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming)
+And `Timing` is like [PerformanceNavigationTiming](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming),
+but with integer values for sake of serialization

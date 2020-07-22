@@ -5,7 +5,7 @@ import Apm from '../../src/Apm';
 describe('getGeneralInfo', () => {
 
     const performance = {
-        getEntriesByType: () => [{domComplete: 100} as PerformanceNavigationTiming]
+        getEntriesByType: () => [{domComplete: 100.123} as PerformanceNavigationTiming]
     }
 
     const window = {
@@ -16,10 +16,17 @@ describe('getGeneralInfo', () => {
 
     const apm = new Apm(window);
 
-    test('user agent', () => {
-        const info = apm.getGeneralInfo();
-        expect(info.userAgent).toBe('UA');
+    const info = apm.getGeneralInfo();
+
+    test('timings', () => {
+        expect(info.timing && info.timing.domComplete).toBe(100)
+    });
+
+    test('connection', () => {
         expect(info.connection && info.connection.type).toBe('wifi');
-        expect(info.timing && info.timing.domComplete).toBe(100);
+    });
+
+    test('user agent', () => {
+        expect(info.userAgent).toBe('UA');
     })
 })
