@@ -15,15 +15,15 @@ declare class Connection {
     constructor(type?: "bluetooth" | "none" | "unknown" | "cellular" | "ethernet" | "mixed" | "other" | "wifi" | "wimax" | undefined, effectiveType?: "2g" | "3g" | "4g" | "slow-2g" | undefined, downlinkMax?: number | undefined, downlink?: number | undefined, rtt?: number | undefined, saveData?: boolean | undefined);
 }
 declare class Timing {
-    readonly domComplete: number;
-    readonly domContentLoadedEventEnd: number;
-    readonly domContentLoadedEventStart: number;
-    readonly domInteractive: number;
-    readonly loadEventEnd: number;
-    readonly loadEventStart: number;
-    readonly redirectCount: number;
-    readonly unloadEventEnd: number;
-    readonly unloadEventStart: number;
-    constructor(domComplete: number, domContentLoadedEventEnd: number, domContentLoadedEventStart: number, domInteractive: number, loadEventEnd: number, loadEventStart: number, redirectCount: number, unloadEventEnd: number, unloadEventStart: number);
+    readonly domComplete: bigint;
+    readonly domContentLoadedEventEnd: bigint;
+    readonly domContentLoadedEventStart: bigint;
+    readonly domInteractive: bigint;
+    readonly loadEventEnd: bigint;
+    readonly loadEventStart: bigint;
+    readonly redirectCount: bigint;
+    readonly unloadEventEnd: bigint;
+    readonly unloadEventStart: bigint;
+    constructor(domComplete: bigint, domContentLoadedEventEnd: bigint, domContentLoadedEventStart: bigint, domInteractive: bigint, loadEventEnd: bigint, loadEventStart: bigint, redirectCount: bigint, unloadEventEnd: bigint, unloadEventStart: bigint);
 }
 export {};

@@ -20,8 +20,8 @@ export default class GeneralInfo {
         }
 
         if (timing) {
-            this.timing = new Timing(
-                timing.domComplete,
+            this.timing = new (Timing as any)(
+                ...([timing.domComplete,
                 timing.domContentLoadedEventEnd,
                 timing.domContentLoadedEventStart,
                 timing.domInteractive,
@@ -29,7 +29,7 @@ export default class GeneralInfo {
                 timing.loadEventStart,
                 timing.redirectCount,
                 timing.unloadEventEnd,
-                timing.unloadEventStart
+                timing.unloadEventStart].map(Math.round))
             );
         }
 
@@ -50,15 +50,15 @@ class Connection {
 
 class Timing {
     constructor(
-        readonly domComplete: number,
-        readonly domContentLoadedEventEnd: number,
-        readonly domContentLoadedEventStart: number,
-        readonly domInteractive: number,
-        readonly loadEventEnd: number,
-        readonly loadEventStart: number,
-        readonly redirectCount: number,
-        readonly unloadEventEnd: number,
-        readonly unloadEventStart: number
+        readonly domComplete: bigint,
+        readonly domContentLoadedEventEnd: bigint,
+        readonly domContentLoadedEventStart: bigint,
+        readonly domInteractive: bigint,
+        readonly loadEventEnd: bigint,
+        readonly loadEventStart: bigint,
+        readonly redirectCount: bigint,
+        readonly unloadEventEnd: bigint,
+        readonly unloadEventStart: bigint
     ) {
     }
 }
