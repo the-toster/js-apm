@@ -5,10 +5,26 @@
     <title>APM Demo</title>
 </head>
 <body>
+    <pre data-display="general-info"></pre>
+    <pre data-display="fps"></pre>
     <script src="dist/bundle/js-apm.js"></script>
     <script>
         const apm = new Apm(window);
-        console.log(apm.getGeneralInfo());
+
+        const infoDisplay = document.querySelector('[data-display="general-info"]');
+        const fpsDisplay = document.querySelector('[data-display="fps"]');
+
+        display(infoDisplay, apm.getGeneralInfo());
+
+        apm.startFpsMeasure();
+        setTimeout(() => {
+            apm.stopFpsMeasure();
+            display(fpsDisplay, apm.getFPS());
+        }, 3000);
+
+        function display(where, what) {
+            where.innerHTML = JSON.stringify(what, undefined, 4);
+        }
     </script>
 </body>
 </html>

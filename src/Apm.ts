@@ -1,6 +1,6 @@
 import GeneralInfo from "./GeneralInfo";
 import FpsMeter, {RequestAnimationFrame} from "./FPS/FpsMeter";
-import Collector, {FpsMeasure} from "./FPS/Collector";
+import Collector, {Measure} from "./FPS/Collector";
 
 export default class Apm {
     readonly navigator: Navigator;
@@ -37,7 +37,7 @@ export default class Apm {
         this.fpsMeter.stopMeasure();
     }
     
-    getFPS(): Array<FpsMeasure>
+    getFPS(): Array<Measure>
     {
         return this.fpsCollector.getMeasures();
     }

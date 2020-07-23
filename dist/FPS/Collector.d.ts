@@ -1,6 +1,9 @@
 export default class Collector {
     private buffer;
-    push(time: number, fps: number): void;
-    getMeasures(): Array<FpsMeasure>;
+    private cursor;
+    private last;
+    push(time: number, val: number): void;
+    private addToBuffer;
+    getMeasures(): Array<Measure>;
 }
-export declare type FpsMeasure = [number, number];
+export declare type Measure = [number, number];

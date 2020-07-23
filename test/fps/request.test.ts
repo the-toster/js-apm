@@ -19,7 +19,7 @@ describe('fps meter request callback', () => {
             if (time) {
                 Promise.resolve().then(() => fn(time));
             } else {
-                expect(Math.round(collect.getMeasures()[2][1])).toBe(60)
+                expect(Math.round(collect.getMeasures()[0][1])).toBe(60)
                 resolve();
             }
             return 100;

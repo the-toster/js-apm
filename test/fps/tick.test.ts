@@ -13,9 +13,11 @@ describe('fps meter tick', () => {
     meter.tick(frameLen);
     meter.tick(frameLen * 2);
     meter.tick(frameLen * 3);
+    meter.tick(frameLen * 4);
+    meter.tick(frameLen * 5);
 
     const measures = collector.getMeasures();
     test('correct fps count', () => {
-        expect(measures[2][1]).toBe(60)
+        expect(measures[0][1]).toBe(60)
     });
 });
