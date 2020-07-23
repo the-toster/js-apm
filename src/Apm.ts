@@ -1,15 +1,21 @@
 import GeneralInfo from "./GeneralInfo";
-import {RequestAnimationFrame} from "./FPS/FpsMeter";
+import FpsMeter, {RequestAnimationFrame} from "./FPS/FpsMeter";
+import Collector, {FpsMeasure} from "./FPS/Collector";
 
 export default class Apm {
     readonly navigator: Navigator;
     readonly performance: Performance;
     readonly requestAnimationFrame: RequestAnimationFrame;
+    readonly fpsCollector: Collector;
+    readonly fpsMeter: FpsMeter;
 
     constructor(window: WindowInterface) {
         this.navigator = window.navigator;
         this.performance = window.performance;
         this.requestAnimationFrame = window.requestAnimationFrame;
+
+        this.fpsCollector = new Collector();
+        this.fpsMeter = new FpsMeter(this.fpsCollector);
     }
 
     getGeneralInfo(): GeneralInfo {
@@ -23,10 +29,18 @@ export default class Apm {
         );
     }
 
-    startFpsMeasurement(): void {
-
+    startFpsMeasure(): void {
+        this.fpsMeter.startMeasure(this.requestAnimationFrame);
     }
 
+    stopFpsMeasure(): void {
+        this.fpsMeter.stopMeasure();
+    }
+    
+    getFPS(): Array<FpsMeasure>
+    {
+        return this.fpsCollector.getMeasures();
+    }
 }
 
 interface WindowInterface {

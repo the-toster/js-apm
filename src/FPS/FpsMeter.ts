@@ -1,10 +1,10 @@
-export default class FpsMeter {
-    private last: number = 0;
-    private fps: number = 0;
-    private enableMeasure: boolean = false;
+import Collector from "./Collector";
 
+export default class FpsMeter {
+    private last = 0;
+    private enableMeasure = false;
     constructor(
-        readonly frameRequest: RequestAnimationFrame
+        readonly collector: Collector
     ) {
 
     }
@@ -13,26 +13,24 @@ export default class FpsMeter {
         this.enableMeasure = false;
     }
 
-    startMeasure(): void {
+    startMeasure(frameRequest: RequestAnimationFrame): void {
         this.enableMeasure = true;
-        this.frameRequest(time => {
+        frameRequest(time => {
                 this.tick(time);
                 if (this.enableMeasure) {
-                    this.startMeasure()
+                    this.startMeasure(frameRequest);
                 }
             }
         )
     }
 
     tick(time: number): void {
-        const delta = time - this.last;
-        this.fps = 1000 / delta;
+        const deltaT = time - this.last;
+        const instantFps = Math.round(1000 / deltaT);
         this.last = time;
+        this.collector.push(time, instantFps);
     }
 
-    getFrameRate(): number {
-        return this.fps;
-    }
 }
 
 export interface RequestAnimationFrame {

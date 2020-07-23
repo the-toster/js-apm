@@ -1,9 +1,11 @@
 import {describe, test, expect} from '@jest/globals';
 
 import FpsMeter from "../../src/FPS/FpsMeter";
+import Collector from "../../src/FPS/Collector";
 
 describe('fps meter tick', () => {
-    const meter = new FpsMeter(cb => 100);
+    const collector = new Collector();
+    const meter = new FpsMeter(collector);
     //For FPS 60 frame duration = 1/60 seconds = 1000/60 ms
     const frameLen = 1000 / 60;
 
@@ -12,8 +14,8 @@ describe('fps meter tick', () => {
     meter.tick(frameLen * 2);
     meter.tick(frameLen * 3);
 
-    const intFPS = Math.round(meter.getFrameRate());
+    const measures = collector.getMeasures();
     test('correct fps count', () => {
-        expect(intFPS).toBe(60)
+        expect(measures[2][1]).toBe(60)
     });
 });
